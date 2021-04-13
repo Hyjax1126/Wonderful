@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+<!--    <link rel="stylesheet" href="../css/bootstrap.css">-->
+    <script src="../js/jquery-3.2.1.js"></script>
+<!--    <script src="../js/bootstrap.js"></script>-->
+    <style>
+        .contain{
+            position: absolute;
+            top:50%;
+            left:50%;
+            transform: translate(-50%, -50%);
+            width:400px;
+            height:250px;
+            border:1px solid rgba(0,0,0,0.3);
+        }
+        .wonderful{
+            position: relative;
+            width:80%;
+            line-height: 125px;
+            height:50%;
+            left:50%;
+            transform: translateX(-50%);
+        }
+        .wonderful input{
+            width:100%;
+            background-color: transparent;
+            border:0px;
+            border-bottom: 1px solid rgba(0,0,0,0.3);
+            outline: none;
+            font-size: 24px;
+        }
+        .wonderful span{
+            position: absolute;
+            top:0px;
+            transition: all 0.5s;
+        }
+        .wonderful span.in{
+            top:-40px;
+            font-size: 24px;
+        }
+    </style>
+    <script>
+        $(function(){
+            $("input").focus(function(){
+                $(this).parent(0).children("span").addClass("in");
+            });
+            $("input").blur(function(){
+                if($(this).val() == ""){
+                    $(this).parent(0).children("span").removeClass("in");
+                }
+            });
+        })
+    </script>
+</head>
+<body>
+    <div class="contain">
+        <div class="wonderful">
+            <input type="text">
+            <span>账号</span>
+        </div>
+        <div class="wonderful">
+            <input type="password">
+            <span>密码</span>
+        </div>
+    </div>
+</body>
+</html>

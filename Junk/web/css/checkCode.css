@@ -1,0 +1,151 @@
+
+@media only screen and (min-width: 768px) {
+    .checkCode{
+        width: 300px;
+        height: 282px;
+    }
+    .checkCodeBody{
+        height:200px;
+    }
+    .checkCode{
+        top:43%;
+    }
+}
+@media only screen and (max-width: 768px) {
+    .checkCode{
+        width: 250px;
+        height: 242px;
+    }
+    .checkCodeBody{
+        height:160px;
+    }
+    .checkCode{
+        top:30%;
+    }
+}
+input[type='range']{
+    position: absolute;
+    appearance: none;
+    background: linear-gradient(90deg, #03a9f4, #f441a5, #ffeb3b, #03a9f4);
+    background-size: 400%;
+    outline: none;
+    border-radius: 8px;
+    width: 95%;
+    z-index: 1;
+}
+input[type='range']:before{
+    content:" ";
+    position:absolute;
+    left:-5px;
+    top:-5px;
+    right:-5px;
+    bottom:-5px;
+    background: linear-gradient(90deg, #03a9f4, #f441a5, #ffeb3b, #03a9f4);
+    background-size: 400%;
+    filter: blur(20px);
+    z-index: -1;
+}
+
+input[type='range'].changeLight,
+input[type='range'].changeLight:before{
+    animation: light 8s infinite;
+}
+input[type='range']::-webkit-slider-thumb {
+    -webkit-appearance: none;/*清除系统默认样式*/
+    height: 16px;/*拖动块高度*/
+    width: 16px;/*拖动块宽度*/
+    background-color: rgba(255,255,255,0.3);/*拖动块背景*/
+    border-radius: 50%; /*外观设置为圆形*/
+    border: solid 1px rgba(255,255,255,0.6); /*设置边框*/
+}
+
+@keyframes light {
+    100%{
+        background-position: -400% 0;
+    }
+}
+
+.checkCodeDiv{
+    position: fixed;
+    font-weight: 300;
+    backdrop-filter: blur(10px);
+    background-color: rgba(0,0,0,0.3);
+    font-size: 16px;
+    height: 100vh;
+    width: 100vw;
+    z-index: 1060;
+    opacity: 0;
+    transition: opacity 0.5s;
+    visibility: hidden;
+}
+.checkCodeDiv.open{
+    opacity: 1;
+    visibility: visible;
+}
+
+body{
+    padding: 0;
+    margin: 0;
+}
+.checkCode{
+    position: absolute;
+    left:50%;
+    transform: translate(-50%,-50%);
+    background:linear-gradient(to right bottom, rgba(255,255,255,0.6),rgba(255,255,255,0.1));
+    border-radius: 10px;
+    overflow: hidden;
+}
+.checkCodeTitle{
+    height:40px;
+    line-height: 40px;
+    text-align: center;
+    border-bottom: 1px solid rgba(255,255,255,0.3);
+}
+.checkCodeFooter{
+    position: absolute;
+    width:100%;
+    bottom: 0px;
+    border-top: 1px solid rgba(255,255,255,0.3);
+    padding-left: 2.5%;
+    padding-top:10px;
+    height:40px;
+}
+.checkCodeImg{
+    background-image: url("../img/project/7777.jpg");
+    background-size: 100% 100%;
+    overflow: hidden;
+}
+.checkCodeBody{
+    width:100%;
+    position: relative;
+}
+.checkCodeBody>img{
+    width:100%;
+    height: 100%;
+}
+.checkCodeImg{
+    position: absolute;
+    left:5px;
+    top:5px;
+    right:5px;
+    bottom:5px;
+    border-radius: 5px;
+}
+.outDiv,.inDiv{
+    width:40px;
+    height:40px;
+    position: absolute;
+    top:50%;
+    transform: translateY(-50%);
+    font-size: 40px;
+}
+.outDiv{
+    /*background-color: #2aabd2;*/
+    color:rgba(255,255,255,0.7);
+    left:10%;
+}
+.inDiv{
+    /*background-color: green;*/
+    color:rgba(0,0,0,0.7);
+    left:57%;
+}

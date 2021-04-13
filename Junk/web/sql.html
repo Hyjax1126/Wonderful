@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数据库</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <script type="text/javascript" src="js/jquery-3.2.1.js"></script>
+    <script type="text/javascript" src="js/bootstrap.js"></script>
+    <style>
+        #body button{
+            outline: none;
+        }
+    </style>
+    <script>
+        // var user = [
+        //     {a:1,b:1,c:2},
+        //     {a:1,b:1,c:2},
+        //     {a:1,b:1,c:2},
+        // ];
+        // localStorage.setItem('user',JSON.stringify(user));
+
+
+        $(function () {
+            // var tableName;
+            // var primaryKey;
+            // 自动get所有列，并排出对应的表单
+            function getColumn(e) {
+                // var $h3s = $("h3");
+                // var h3;
+                // for(var i = 0; i < $h3s.length; i++){
+                //     if($h3s[i].innerText == tableName){
+                //         h3 = $h3s[i];
+                //     }
+                // }
+                // console.log($(h3).text());
+                // $("");
+                $(".modal-body").empty();
+                var $forms = $("<div class='form-horizontal'></div>");
+                if ($(e).text() == '新增') {
+                    var table = $("table[name='" + $(e).attr('name') + "']");
+                    var tr = ($(table).children().children())[0];
+                    var cols = $(tr).children();
+
+                    for (var i = 1; i < cols.length - 1; i++) {
+                        var $formGroup = $("<div class='form-group'></div>");
+                        var $label = $("<label class='control-label col-md-4'>" + $(cols[i]).attr('name') + "</label>");
+                        var $formContain = $("<div class='col-md-6'></div>");
+                        var $input = $("<input name='" + $(cols[i]).attr('name') + "' type='text'>");
+                        $formContain.append($input);
+                        $formGroup.append($label);
+                        $formGroup.append($input);
+                        $forms.append($formGroup);
+                    }
+                    $(".modal-body").append($forms);
+                    $(".modal-title").html("为<span id='tableName'>" + $(e).attr('name') + "</span>表中添加一条数据");
+                    $(".btn-accept").text("添加");
+
+                } else if ($(e).text() == '修改') {
+                    var row = $(e).parents('tr[name]');
+                    var table = $(row).parents('table[name]');
+                    var cols = $(row).children();
+
+                    for (var i = 1; i < cols.length - 1; i++) {
+                        var $formGroup = $("<div class='form-group'></div>");
+                        var $label = $("<label class='control-label col-md-4'>" + $(cols[i]).attr('name') + "</label>");
+                        var $formContain = $("<div class='col-md-6'></div>");
+                        var $input = $("<input name='" + $(cols[i]).attr('name') + "' type='text' value='" + $(cols[i]).text() + "'>");
+                        $formContain.append($input);
+                        $formGroup.append($label);
+                        $formGroup.append($input);
+                        $forms.append($formGroup);
+                    }
+                    $(".modal-body").append($forms);
+                    $(".modal-title").html("修改<span id='tableName'>" + $(table).attr('name') + "</span>表中<span id='primary'>" + $(row).attr('name') + "</span>的相关信息");
+                    $(".btn-accept").text("修改");
+                }
+            }
+
+            for (var i = 0; i < localStorage.length; i++) {
+                var tableName = localStorage.key(i);
+                var row = $("<div class='row'></div>");
+                var col = $("<div class='col-md-12'></div>")
+                col.append($("<h3 name='" + tableName + "' class='text-center text-primary'>" + tableName + "</h3>"));
+                col.append("<button name='" + tableName + "' class='btn btn-sm btn-success add-table' data-toggle='modal' data-target='#myModal'>新增</button><button name='" + tableName + "' class='btn btn-sm btn-danger close-table'>删除表</button>");
+                var table = $("<table name='" + tableName + "' class='table table-hover table-striped'><tbody></tbody></table>");
+                var dataTable = JSON.parse(localStorage.getItem(tableName) || '{}');
+                if (dataTable.length > 0) {
+                    debugger;
+                    var keys = [];
+                    for (var i in dataTable[0]) {
+                        keys.push(i);
+                    }
+                    var trh = $("<tr name='" + tableName + "'></tr>");
+                    for (var i = 0; i < keys.length; i++) {
+                        $(trh).append($("<td name='" + keys[i] + "'>" + keys[i] + "</td>"));
+                    }
+                    $(trh).append("<td>操作</td>")
+                    $(table).append(trh);
+                    for (var i = 0; i < dataTable.length; i++) {
+                        var tr = $("<tr name='" + dataTable[i][keys[0]] + "'></tr>");
+
+                        for (var j = 0; j < keys.length; j++) {
+                            $(tr).append($("<td name='" + keys[j] + "'>" + dataTable[i][keys[j]] + "</td>"))
+                        }
+                        $(tr).append("<td><button name='" + dataTable[i][keys[0]] + "' class='btn btn-sm btn-info change-table' data-toggle='modal' data-target='#myModal'>修改</button><button name='" + dataTable[i][keys[0]] + "' class='btn btn-sm btn-danger remove-row'>删除</button></td>");
+                        $(table).append(tr);
+                    }
+                }
+                col.append(table);
+                row.append(col);
+                $(".container").append(row);
+            }
+
+            $(".close-table").bind("click", function () {
+                if (confirm('确定要删除表：' + $(this).attr('name') + '吗？删除后无法撤回！')) {
+                    // 删除该表
+                    localStorage.removeItem($(this).attr('name'));
+                    alert("删除成功");
+                    location.reload();
+                }
+            });
+            $(".change-table").bind("click", function () {
+
+
+                getColumn(this);
+            });
+            $(".add-table").bind("click", function () {
+                // tableName = $(this).parent().children("h3").text();
+
+                getColumn(this);
+            });
+
+            //修改与添加
+            $(".btn-accept").bind("click", function () {
+                if ($('.btn-accept').text() == '修改') {
+                    if (confirm("确定要修改吗？")) {
+                        var primary = $("#primary").text();
+                        var tableName = $("#tableName").text();
+                        var dataTable = JSON.parse(localStorage.getItem(tableName));
+                        var inputs = $('.form-group>input');
+                        var dataJSON = '{"id":"' + primary + '"';
+                        for (var i = 0; i < inputs.length; i++) {
+                            dataJSON += ",";
+                            dataJSON += '"' + $(inputs[i]).attr('name') + '":';
+                            dataJSON += '"' + $(inputs[i]).val() + '"';
+                        }
+                        dataJSON += "}";
+
+                        for (var i = 0; i < dataTable.length; i++) {
+                            if (dataTable[i]["id"] == $(this).attr('name')) {
+                                dataTable.splice(i, 1);
+                                dataTable.splice(i, 0, JSON.parse(dataJSON));
+                                localStorage.setItem(tableName, JSON.stringify(dataTable));
+                                break;
+                            }
+                            // for (var temp in dataTable[i]) {
+                            //     if (temp == "id" && dataTable[i]["id"] == primary) {
+                            //     }
+                            // }
+                        }
+
+                        alert("修改成功");
+                        location.reload();
+                    }
+                } else if ($('.btn-accept').text() == '添加') {
+                    if (confirm("确定要添加吗？")) {
+                        var tableName = $("#tableName").text();
+                        var dataTable = JSON.parse(localStorage.getItem(tableName));
+                        var primary = parseInt(dataTable[dataTable.length - 1]["id"]) + 1;
+
+                        var inputs = $('.form-group>input');
+                        var dataJSON = '{"id":"' + primary + '"';
+                        for (var i = 0; i < inputs.length; i++) {
+                            dataJSON += ",";
+                            dataJSON += '"' + $(inputs[i]).attr('name') + '":';
+                            dataJSON += '"' + $(inputs[i]).val() + '"';
+                        }
+                        dataJSON += "}";
+                        dataTable.push(JSON.parse(dataJSON));
+                        localStorage.setItem(tableName,JSON.stringify(dataTable));
+                        location.reload();
+                    }
+                }
+            });
+
+            //删除一行数据
+            $('.remove-row').bind("click", function () {
+                if (confirm('确定要删除' + $(this).attr('name') + '吗？')) {
+                    var primaryKey = $(($(this).parent().parent().children())[0]);
+                    var table = $(primaryKey).parent().parent().parent();
+
+                    var dataTable = JSON.parse(localStorage.getItem($(table).attr("name")));
+                    for (var i = 0; i < dataTable.length; i++) {
+                        if (dataTable[i]["id"] == $(this).attr('name')) {
+                            dataTable.splice(i, 1);
+                            localStorage.setItem($(table).attr("name"), JSON.stringify(dataTable));
+                            break;
+                        }
+                        // for (var temp in dataTable[i]) {
+                        //     console.log(temp + ":" + dataTable[i][temp]);
+                        //     if (temp == primaryKey.attr('name') && dataTable[i][temp] == $(this).attr('name')) {
+                        //     }
+                        // }
+                    }
+                    location.reload();
+                }
+            });
+        });
+    </script>
+</head>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">修改</h4>
+            </div>
+            <div class="modal-body">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary btn-accept"></button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+<body id="body">
+<div class="container">
+</div>
+</body>
+</html>

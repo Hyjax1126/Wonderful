@@ -1,0 +1,183 @@
+
+/*栅格*/
+/*.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {*/
+/*    position: relative;*/
+/*    min-height: 1px;*/
+/*    padding-right: 5px;*/
+/*    padding-left: 5px;*/
+/*}!*栅格*!*/
+
+/*模态框*/
+@media only screen and (min-width: 768px) {
+    .modal-dialog {
+        width: 600px;
+        margin-top: 12vh;
+        margin-left: auto;
+    }
+}
+
+.modal-content {
+    background: linear-gradient(to right bottom, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.3));
+}
+
+.modal-header {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.modal-body{
+    max-height:500px;
+    overflow-y: auto;
+}
+
+.modal-footer {
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+}
+/*模态框*/
+
+
+/*酷炫按钮*/
+.btn.btn-funny{
+    color:white;
+}
+.btn.btn-bored{
+    color:black;
+}
+.btn-funny{
+    /*display: block;*/
+    position: relative;
+    background: linear-gradient(90deg, #03a9f4, #f441a5, #ffeb3b, #03a9f4);
+    background-size: 400%;
+    /*border-radius: 50px;*/
+    z-index: 1;
+}
+.btn-bored{
+    /*display: block;*/
+    position: relative;
+    background: rgba(255,255,255,0.6);
+    z-index: 1;
+}
+.btn-funny:before{
+    content:"";
+    position:absolute;
+    left:-5px;
+    top:-5px;
+    right:-5px;
+    bottom:-5px;
+    background: linear-gradient(90deg, #03a9f4, #f441a5, #ffeb3b, #03a9f4);
+    background-size: 400%;
+    filter: blur(20px);
+    z-index: -1;
+}
+.btn-bored:active{
+    background-color: transparent;
+}
+.btn-bored:before{
+    content:"";
+    position:absolute;
+    left:-5px;
+    top:-5px;
+    right:-5px;
+    bottom:-5px;
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.6);
+    filter: blur(20px);
+    z-index: -1;
+}
+/*.btn-funny:hover,*/
+.btn-funny:hover:before{
+    animation: light 8s infinite;
+}
+
+.btn-bored:active:before,
+.btn-bored:hover:before{
+    animation: dying 2s infinite;
+}
+@keyframes light {
+    100%{
+        background-position: -400% 0;
+    }
+}
+@keyframes dying{
+    50%{
+        box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.6), 0px 0px 15px 0px rgba(0,0,0,0.6), 0px 0px 25px 0px rgba(0,0,0,0.6);
+    }
+    100%{
+        box-shadow: 0px 0px 0px 0px rgba(0,0,0,0.6);
+    }
+}
+
+
+/*酷炫按钮*/
+
+/*导航条*/
+
+.navbar-default .navbar-toggle {
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+#nav {
+    filter: none;
+    background-color: transparent;
+    border: 0px;
+    z-index: 1;
+}
+
+#nav, #nav a {
+    color: white;
+}
+
+#nav .dropdown-menu {
+    padding: 5px;
+}
+
+#nav .dropdown-menu, #nav .open a {
+    background-color: transparent;
+}
+
+#nav .active a, #nav .open a:hover, #nav li:hover, #main .logo .opcBtn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.3);
+}
+
+.navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
+    background-color: rgba(255, 255, 255, 0.3);;
+}
+
+.media {
+    margin-top: 0px;
+}
+
+.badge {
+    margin-top: -3px;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+/*导航条*/
+
+.panel .breadcrumb{
+    border-radius: 0;
+    background-color: rgba(255, 255, 255, 0.6);
+}
+.panel .nav-pills>li>a:hover,#rightDiv .nav-pills>li>a:hover{
+    /*background-color: black;*/
+    border-radius: 0;
+    background-color: rgba(255, 255, 255, 0.4);
+}
+.panel .nav-pills>li{
+    margin-top:0px;
+}
+/*panel容器*/
+/*缩略图*/
+.thumbnail .dropdown-menu{
+    background: rgba(255,255,255,0.6);
+}
+.thumbnail .dropdown-menu li a:hover{
+    background: rgba(255,255,255,0.7);
+}
+.thumbnail a>p,.thumbnail a>h3{
+}
+/*缩略图*/
+/*重写警告框*/
+.alert-danger{
+    background-color: rgba(236,28,36,.3);
+    color:rgba(255,255,255,.7);
+    border:1px solid rgba(255,255,255,.7);
+}

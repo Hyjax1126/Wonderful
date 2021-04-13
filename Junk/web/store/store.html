@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta charset="UTF-8">
+    <title>我的店铺</title>
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/baseStyle.css">
+    <script type="text/javascript" src="../js/jquery-3.2.1.js"></script>
+    <script type="text/javascript" src="../js/ichart.1.2.src.js"></script>
+    <script type="text/javascript" src="../js/bootstrap.js"></script>
+    <script type="text/javascript" src="../js/baseJs.js"></script>
+    <script>
+        $(function(){
+            $('.myTabs a').click(function (e) {
+                e.preventDefault()
+                $(this).tab('show')
+            })
+
+            $("#sidebar li a").click(function(){
+                // alert(1);
+                $("#sidebar li").removeClass("active");
+            });
+
+            // $('#myTabs a[href="#profile"]').tab('show') // Select tab by name
+            // $('#myTabs a:first').tab('show') // Select first tab
+            // $('#myTabs a:last').tab('show') // Select last tab
+            // $('#myTabs li:eq(2) a').tab('show') // Select third tab (0-indexed)
+        })
+    </script>
+    <style>
+
+        .panel-group .panel {
+            border: 0px;
+            border-bottom: 1px solid #ddd;
+            width: 100%;
+        }
+        #sidebar .panel{
+            margin: 0px;
+        }
+
+        #sidebar {
+            padding: 0px;
+        }
+
+        .panel-body {
+            padding: 0px;
+        }
+
+        .panel-heading .panel-title {
+            text-indent: 20px;
+        }
+
+        .panel-body li a {
+            text-indent: 40px;
+        }
+        #canvasDiv{
+            height:400px;
+        }
+    </style>
+</head>
+<body id="body">
+<div class="modal fade" id="loginModal" tabindex="-1">
+<!--    <div class="modal-dialog modal-sm" role="document">-->
+<!--        <div class="modal-content">-->
+<!--            <div class="modal-header">-->
+<!--                <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>-->
+<!--                <h4 class="modal-title" id="myModalLabel">登陆我的破烂网账号</h4>-->
+<!--            </div>-->
+<!--            <div class="modal-body">-->
+<!--                <span>账号</span>-->
+<!--                <input type="text" class="form-control">-->
+<!--                <span>密码</span>-->
+<!--                <input type="password" class="form-control">-->
+<!--                <div class="checkbox">-->
+<!--                    <label>-->
+<!--                        <input type="checkbox">记住密码-->
+<!--                    </label>-->
+<!--                    <label>-->
+<!--                        <input type="checkbox">七天免登录-->
+<!--                    </label>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="modal-footer">-->
+<!--                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>-->
+<!--                <button type="button" class="btn btn-primary">登陆</button>-->
+<!--            </div>-->
+<!--        </div>-->
+    </div>
+</div>
+<nav id="nav" class="navbar navbar-default">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Brand</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Link</a></li>
+                <li><a href="#">Link</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false">Dropdown <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">Separated link</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">One more separated link</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#" data-toggle="modal" data-target="#loginModal">登陆</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">Separated link</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div><!-- /.navbar-collapse -->
+</nav>
+<main id="main">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-2" id="sidebar">
+                <sidebar class="myTabs">
+                    <div class="panel-group" id="accordion">
+                        <div class="panel panel-default">
+                            <div class="panel-heading" id="headingThree">
+                                <h4 class="panel-title">
+                                    <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+                                        订单管理
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseThree" class="panel-collapse collapse in">
+                                <div class="panel-body">
+                                    <ul class="nav nav-pills nav-stacked">
+                                        <li class="active"><a href="#sale" data-toggle="tab">销售详情</a></li>
+<!--                                        <li><a href=""></a></li>-->
+                                        <!--                                        <li><a href=""></a></li>-->
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="headingOne">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                                        店铺管理
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseOne" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <ul class="nav nav-pills nav-stacked">
+                                        <li><a href="#storeInfo" data-toggle="tab">店铺信息更新</a></li>
+                                        <li><a href="#storePage" data-toggle="tab">店铺网站设计</a></li>
+<!--                                        <li><a href=""></a></li>-->
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="headingTwo">
+                                <h4 class="panel-title">
+                                    <a class="collapsed" data-toggle="collapse" data-parent="#accordion"
+                                       href="#collapseTwo">
+                                        商品管理
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel"
+                                 aria-labelledby="headingTwo">
+                                <div class="panel-body">
+                                    <ul class="nav nav-pills nav-stacked">
+                                        <li><a href="#productInfo" data-toggle="tab">商品信息更新</a></li>
+<!--                                        <li><a href=""></a></li>-->
+                                        <!--                                        <li><a href=""></a></li>-->
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </sidebar>
+            </div>
+            <div class="col-md-offset-2 col-md-10 tab-content">
+                <div id="sale" class="tab-pane fade in active">
+                    <div class="myTabs" class="col-md-12">
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#thisMonth" data-toggle="tab">本月</a></li>
+                            <li><a href="#lastMonth" data-toggle="tab">上月</a></li>
+                            <li><a href="#thisYear" data-toggle="tab">今年</a></li>
+                            <li><a href="#lastYear" data-toggle="tab">去年</a></li>
+                            <li><a href="#allDate" data-toggle="tab">全部</a></li>
+                        </ul>
+
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div class="tab-pane fade in active" id="thisMonth">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h3 class="text-primary text-center">数据统计</h3>
+                                        <div id="canvasDiv"></div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h3 class="text-primary text-center">数据月报</h3>
+                                        <div class="panel text-center">
+                                            <div class="row">
+                                                <div class="col-md-3 h4">
+                                                    本月总销量
+                                                </div>
+                                                <div class="col-md-3 h4">
+                                                    较上月相比
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-3 h3">
+                                                    1400
+                                                </div>
+                                                <div class="col-md-3 h3 text-danger">
+                                                    -1000 <span class="glyphicon glyphicon-arrow-down"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <script>
+                                    $(function(){
+                                        var data = [
+                                            {name : '摇头丸',value : 30,color:'#fedd74'},
+                                            {name : '大麻',value : 25,color:'#82d8ef'},
+                                            {name : '冰毒',value : 15,color:'#f76864'},
+                                            {name : 'K粉',value : 20,color:'#80bd91'},
+                                            {name : '其他',value : 10,color:'#fd9fc1'}
+                                        ];
+
+                                        var chart = new iChart.Donut2D({
+                                            render : 'canvasDiv',
+                                            center:{
+                                                text:'本月销量统计',
+                                                shadow:true,
+                                                shadow_offsetx:0,
+                                                shadow_offsety:2,
+                                                shadow_blur:2,
+                                                shadow_color:'#b7b7b7',
+                                                color:'#6f6f6f'
+                                            },
+                                            data: data,
+                                            offsetx:-60,
+                                            shadow:true,
+                                            // background_color:'#f4f4f4',
+                                            tip:{
+                                                enable:true,
+                                                showType:'fixed'
+                                            },
+                                            legend : {
+                                                enable : true,
+                                                shadow:true,
+                                                background_color:null,
+                                                border:false,
+                                                legend_space:30,//图例间距
+                                                line_height:34,//设置行高
+                                                sign_space:10,//小图标与文本间距
+                                                sign_size:30,//小图标大小
+                                                color:'#6f6f6f',
+                                                fontsize:30//文本大小
+                                            },
+                                            sub_option:{
+                                                label:false,
+                                                color_factor : 0.3
+                                            },
+                                            showpercent:true,
+                                            decimalsnum:2,
+                                            animation:true,
+                                            border:0,
+                                            width : 600,
+                                            height : 400,
+                                            radius:140
+                                        });
+                                        chart.draw();
+                                    });
+                                </script>
+                            </div>
+                            <div class="tab-pane fade" id="lastMonth">
+                                <h3 class="text-primary">数据统计</h3>
+
+                            </div>
+                            <div class="tab-pane fade" id="thisYear">3</div>
+                            <div class="tab-pane fade" id="lastYear">4</div>
+                            <div class="tab-pane fade" id="allDate">5</div>
+                        </div>
+                    </div>
+                </div>
+                <div id="storeInfo" class="tab-pane fade">
+                    <div class="jumbotron">
+                        <p>喜羊羊与灰太狼周边官方旗舰店</p>
+                    </div>
+                    <form class="form-horizontal">
+                        <div class="form-group form-group-lg">
+                            <label class="col-md-2 control-label">店铺头像</label>
+                            <div class="col-md-4">
+                                <img width="200" class="img-rounded" src="../img/headimg/0617.png" alt="">
+                            </div>
+                        </div>
+                    </form>
+                    <form class="form-horizontal">
+                        <div class="form-group form-group-lg">
+                            <label class="col-md-2 control-label">店铺所属人</label>
+                            <div class="col-md-4">
+                                <p class="form-control-static">喜*羊</p>
+                            </div>
+                        </div>
+                    </form>
+                    <form class="form-horizontal">
+                        <div class="form-group form-group-lg">
+                            <label class="col-md-2 control-label">手机号码</label>
+                            <div class="col-md-4">
+                                <p class="form-control-static">137****8898</p>
+                            </div>
+                        </div>
+                    </form>
+                    <form class="form-horizontal">
+                        <div class="form-group form-group-lg">
+                            <label class="col-md-2 control-label">身份证</label>
+                            <div class="col-md-4">
+                                <p class="form-control-static">3625**********2117</p>
+                            </div>
+                        </div>
+                    </form>
+                    <form class="form-horizontal">
+                        <div class="form-group form-group-lg">
+                            <label class="col-md-2 control-label">店铺类型</label>
+                            <div class="col-md-4">
+                                <select class="form-control">
+                                    <option value="">全部</option>
+                                    <option value="">零食</option>
+                                    <option value="">数码</option>
+                                </select>
+                            </div>
+                        </div>
+                    </form>
+                    <form class="form-horizontal">
+                        <div class="form-group form-group-lg">
+                            <label class="col-md-2 control-label">店铺简介</label>
+                            <div class="col-md-4">
+                                <textarea class="form-control" id="" cols="30" rows="10" placeholder="在此输入客户进入你的店铺所看到的信息"></textarea>
+                            </div>
+                        </div>
+                    </form>
+                    <form class="form-horizontal">
+                        <div class="form-group form-group-lg">
+                            <label class="col-md-2 control-label"></label>
+                            <div class="col-md-4">
+                                <button class="btn btn-block btn-primary">保存修改</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div id="storePage" class="tab-pane fade">
+                    <h3 class="text-primary">网站模板</h3>
+                </div>
+                <div id="productInfo" class="tab-pane fade"></div>
+            </div>
+        </div>
+    </div>
+</main>
+</body>
+</html>

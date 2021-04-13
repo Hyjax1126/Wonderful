@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta charset="UTF-8">
+    <title>辣条验证码</title>
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/baseStyle.css">
+    <script type="text/javascript" src="../js/jquery-3.2.1.js"></script>
+    <script type="text/javascript" src="../js/bootstrap.js"></script>
+    <script type="text/javascript" src="../js/baseJs.js"></script>
+    <style>
+        @media only screen and (min-width: 768px) {
+            .checkCode{
+                width: 300px;
+                height: 282px;
+            }
+            .checkCodeBody{
+                height:200px;
+            }
+        }
+        @media only screen and (max-width: 768px) {
+            .checkCode{
+                width: 250px;
+                height: 242px;
+            }
+            .checkCodeBody{
+                height:160px;
+            }
+        }
+        input[type='range']{
+            position: absolute;
+            appearance: none;
+            background: linear-gradient(90deg, #03a9f4, #f441a5, #ffeb3b, #03a9f4);
+            background-size: 400%;
+            outline: none;
+            border-radius: 8px;
+            width: 95%;
+            z-index: 1;
+        }
+        input[type='range']:before{
+            content:"";
+            position:absolute;
+            left:-5px;
+            top:-5px;
+            right:-5px;
+            bottom:-5px;
+            background: linear-gradient(90deg, #03a9f4, #f441a5, #ffeb3b, #03a9f4);
+            background-size: 400%;
+            filter: blur(20px);
+            z-index: -1;
+        }
+
+        input[type='range']:active,
+        input[type='range']:active:before{
+            animation: light 8s infinite;
+        }
+        input[type='range']::-webkit-slider-thumb {
+             -webkit-appearance: none;/*清除系统默认样式*/
+             height: 16px;/*拖动块高度*/
+             width: 16px;/*拖动块宽度*/
+             background-color: rgba(255,255,255,0.3);/*拖动块背景*/
+             border-radius: 50%; /*外观设置为圆形*/
+             border: solid 1px rgba(255,255,255,0.6); /*设置边框*/
+         }
+
+        @keyframes light {
+            100%{
+                background-position: -400% 0;
+            }
+        }
+
+        .checkCodeDiv{
+            background-color: rgba(0,0,0,0.3);
+            font-size: 16px;
+            height: 100vh;
+            width: 100vw;
+        }
+        body{
+            overflow: hidden;
+            padding: 0;
+            margin: 0;
+        }
+        .checkCode{
+            position: absolute;
+            top:50%;
+            left:50%;
+            transform: translate(-50%,-50%);
+            background:linear-gradient(to right bottom, rgba(255,255,255,0.6),rgba(255,255,255,0.1));
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .checkCodeTitle{
+            height:40px;
+            line-height: 40px;
+            text-align: center;
+            border-bottom: 1px solid rgba(255,255,255,0.3);
+        }
+        .checkCodeFooter{
+            position: absolute;
+            width:100%;
+            bottom: 0px;
+            border-top: 1px solid rgba(255,255,255,0.3);
+            padding-left: 2.5%;
+            padding-top:10px;
+            height:40px;
+        }
+        .checkCodeImg{
+            background-image: url("../img/project/7777.jpg");
+            background-size: 100% 100%;
+            overflow: hidden;
+        }
+        .checkCodeBody{
+            width:100%;
+            position: relative;
+        }
+        .checkCodeBody>img{
+            width:100%;
+            height: 100%;
+        }
+        .checkCodeImg{
+            position: absolute;
+            left:5px;
+            top:5px;
+            right:5px;
+            bottom:5px;
+            border-radius: 5px;
+        }
+        .outDiv,.inDiv{
+            width:40px;
+            height:40px;
+            position: absolute;
+            top:50%;
+            transform: translateY(-50%);
+            font-size: 40px;
+        }
+        .outDiv{
+            /*background-color: #2aabd2;*/
+            color:rgba(255,255,255,0.7);
+            left:10%;
+        }
+        .inDiv{
+            /*background-color: green;*/
+            color:rgba(0,0,0,0.7);
+            left:57%;
+        }
+    </style>
+    <script>
+        var b = false;
+        $(function(){
+            $("input[type='range']").bind("mousedown",function(){
+                b = true;
+            });
+            $("input[type='range']").bind("touchstart",function(){
+                b = true;
+            });
+
+            $("input[type='range']").bind("mousemove",function(){
+                $(".outDiv").css("left",$("input[type='range']").val() + "%");
+            });
+
+            $("input[type='range']").bind("touchmove",function(){
+                $(".outDiv").css("left",$("input[type='range']").val() + "%");
+            });
+
+            $("input[type='range']").bind("mouseup",function(){
+                if(b){
+                    var temp = $("input[type='range']").val();
+                    if(temp > 54 && temp < 60){
+                        alert("通过");
+                    }else{
+                        $("input[type='range']").val(0);
+                        $(".outDiv").css("left","0");
+                        b = false;
+                    }
+                }
+            });
+
+            $("input[type='range']").bind("touchend",function(){
+                var temp = $("input[type='range']").val();
+                if(temp > 54 && temp < 60){
+                    alert("通过");
+                }else{
+                    $("input[type='range']").val(0);
+                    $(".outDiv").css("left","0");
+                    b = false;
+                }
+            });
+
+        })
+    </script>
+</head>
+<body>
+    <div class="checkCodeDiv">
+        <div class="cover"></div>
+        <div class="checkCode">
+            <div class="checkCodeTitle">
+                请将苹果拖至对应的位置
+            </div>
+            <div class="checkCodeBody">
+                <div class="checkCodeImg">
+                    <span class="inDiv glyphicon glyphicon-apple"></span>
+                    <span class="outDiv glyphicon glyphicon-apple"></span>
+                </div>
+            </div>
+            <div class="checkCodeFooter">
+                <input type="range" value="10">
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta charset="UTF-8">
+    <title>我的购物车</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/baseStyle.css">
+    <link rel="stylesheet" href="css/checkCode.css">
+    <link rel="stylesheet" href="css/load.css">
+    <link rel="stylesheet" href="css/overBootstrap.css">
+    <script type="text/javascript" src="js/jquery-3.2.1.js"></script>
+    <script type="text/javascript" src="js/bootstrap.js"></script>
+    <script type="text/javascript" src="js/baseJs.js"></script>
+    <script type="text/javascript" src="js/checkCode.js"></script>
+    <style>
+        .shopList img {
+            max-width: 100px;
+            max-height:60px;
+            height:60px;
+        }
+
+        #body input[type='number'] {
+            outline: none;
+            width: 50px;
+        }
+    </style>
+</head>
+<body id="body">
+<!--load-->
+<div id="backDiv">
+    <div id="container">
+        <span style="--number:1"></span>
+        <span style="--number:2"></span>
+        <span style="--number:3"></span>
+        <span style="--number:4"></span>
+        <span style="--number:5"></span>
+        <span style="--number:6"></span>
+        <span style="--number:7"></span>
+        <span style="--number:8"></span>
+        <span style="--number:9"></span>
+    </div>
+</div>
+<!--checkCode-->
+<div class="checkCodeDiv">
+    <!--    <div class="cover"></div>-->
+    <div class="checkCode">
+        <div class="checkCodeTitle">
+            请给可爱的缘结神喂一个苹果
+        </div>
+        <div class="checkCodeBody">
+            <div class="checkCodeImg">
+                <span class="inDiv glyphicon glyphicon-apple"></span>
+                <span class="outDiv glyphicon glyphicon-apple"></span>
+            </div>
+        </div>
+        <div class="checkCodeFooter">
+            <input type="range" value="10">
+        </div>
+    </div>
+</div>
+<!--line-->
+<script>
+    !function () {
+        function n(n, e, t) {
+            return n.getAttribute(e) || t
+        }
+
+        function e(n) {
+            return document.getElementsByTagName(n)
+        }
+
+        function t() {
+            var t = e("script"), o = t.length, i = t[o - 1];
+            return {
+                l: o, z: n(i, "zIndex", -1), o: n(i, "opacity", .5), c: n(i, "color", "0,0,0"), n: n(i, "count", 99)
+            }
+        }
+
+        function o() {
+            a = m.width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth,
+                c = m.height = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight
+        }
+
+        function i() {
+            r.clearRect(0, 0, a, c);
+            var n, e, t, o, m, l;
+            s.forEach(function (i, x) {
+                for (i.x += i.xa, i.y += i.ya, i.xa *= i.x > a || i.x < 0 ? -1 : 1, i.ya *= i.y > c || i.y < 0 ? -1 : 1, r.fillRect(i.x - .5, i.y - .5, 1, 1), e = x + 1; e < u.length; e++) n = u[e],
+                null !== n.x && null !== n.y && (o = i.x - n.x, m = i.y - n.y,
+                    l = o * o + m * m, l < n.max && (n === y && l >= n.max / 2 && (i.x -= .03 * o, i.y -= .03 * m),
+                    t = (n.max - l) / n.max, r.beginPath(), r.lineWidth = t / 2, r.strokeStyle = "rgba(" + d.c + "," + (t + .2) + ")", r.moveTo(i.x, i.y), r.lineTo(n.x, n.y), r.stroke()))
+            }),
+                x(i)
+        }
+
+        var a, c, u, m = document.createElement("canvas"),
+            d = t(), l = "c_n" + d.l, r = m.getContext("2d"),
+            x = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame ||
+                function (n) {
+                    window.setTimeout(n, 1e3 / 45)
+                },
+            w = Math.random, y = {x: null, y: null, max: 2e4};
+        m.id = l, m.style.cssText = "position:fixed;top:0;left:0;z-index:" + d.z + ";opacity:" + d.o, e("body")[0].appendChild(m), o(), window.onresize = o,
+            window.onmousemove = function (n) {
+                n = n || window.event, y.x = n.clientX, y.y = n.clientY
+            },
+            window.onmouseout = function () {
+                y.x = null, y.y = null
+            };
+        for (var s = [], f = 0; d.n > f; f++) {
+
+            var h = w() * a, g = w() * c, v = 2 * w() - 1, p = 2 * w() - 1;
+            s.push({x: h, y: g, xa: v, ya: p, max: 6e3})
+
+        }
+
+        u = s.concat([y]),
+
+            setTimeout(function () {
+                i()
+            }, 100)
+
+    }();
+</script>
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">登陆破烂网账号</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group margin-xs-bottom">
+                    <label>账号</label>
+                    <input type="text" required class="form-control bg-normal border-normal">
+                    <!--                    <span class="help-block">用户名或密码错误</span>-->
+                </div>
+                <div class="form-group margin-xs-bottom">
+                    <label>密码</label>
+                    <input type="password" required class="form-control bg-normal border-normal">
+                </div>
+                <div class="form-group margin-xs-bottom">
+                    <div class="checkbox">
+                        <label class="checkbox-inline">
+                            <input type="checkbox">记住密码
+                        </label>
+                        <label class="checkbox-inline">
+                            <input type="checkbox">七天免登录
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group margin-xs-bottom">
+                    <a href="">忘记密码？</a>
+                </div>
+            </div>
+            <div class="modal-footer" style="height:65px">
+                <button type="button" id="btnLogin" class="btn btn-funny">登陆</button>
+                <button type="button" class="btn btn-bored" data-dismiss="modal">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--nav-->
+<nav id="nav" class="navbar navbar-default filterContainer">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="index.html">破烂网</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">商务合作<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">加入我们</a></li>
+                        <li><a href="#">成为商家</a></li>
+                        <li class="divider"></li>
+                        <li class="showDetail"><a href="#">关于破烂网</a></li>
+                        <li class="showDetail"><a href="#">遇到的问题</a></li>
+                        <li class="showDetail"><a href="#">未来可期</a></li>
+                        <li class="showDetail"><a href="#">创办初衷</a></li>
+                    </ul>
+                </li>
+                <li><a href="manage.html">进入后台</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#" data-toggle="modal" data-target="#myModal">登陆</a></li>
+                <li><a href="register.html">注册</a></li>
+                <li>
+                    <a class="dropdown-toggle" data-toggle="dropdown" style="margin-top: 1px;padding:10px" href="#">
+                        <img src="img/headimg/cimu.png" class="img-circle" width="30" alt="">
+                        个人信息
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="selfInfo.html">修改个人信息</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">我的订单</a></li>
+                        <li><a href="#">我的店铺</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">购物车</a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <div class="media">
+                                <div class="media-left">
+                                    <a href="shopCar.html">
+                                        <img class="media-object img-rounded smallImg" src="img/headimg/qianji.png">
+                                    </a>
+                                </div>
+                                <div class="media-body">
+                                    <h5 class="media-heading">千姬</h5>
+                                    <span class="productInfo">真好看真好看真好看真好看真好看真好看真好看真好看真好看真好看</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="media">
+                                <div class="media-left">
+                                    <a href="shopCar.html">
+                                        <img class="media-object img-rounded smallImg" src="img/headimg/qianji.png">
+                                    </a>
+                                </div>
+                                <div class="media-body">
+                                    <h5 class="media-heading">千姬</h5>
+                                    <span class="productInfo">真好看真好看真好看真好看真好看真好看真好看真好看真好看真好看</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="media">
+                                <div class="media-left">
+                                    <a href="shopCar.html">
+                                        <img class="media-object img-rounded smallImg" src="img/headimg/qianji.png">
+                                    </a>
+                                </div>
+                                <div class="media-body">
+                                    <h5 class="media-heading">千姬</h5>
+                                    <span class="productInfo">真好看真好看真好看真好看真好看真好看真好看真好看真好看真好看</span>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">消息 <span class="badge">99+</span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">订单消息 <span class="badge">33</span></a></li>
+                        <li><a href="#">论坛消息 <span class="badge">26</span></a></li>
+                        <li><a href="#">私聊消息 <span class="badge">88</span></a></li>
+                    </ul>
+                </li>
+                <li><a href="forum/index.html">进入论坛</a></li>
+            </ul>
+        </div>
+    </div><!-- /.navbar-collapse -->
+</nav>
+<!--main-->
+<main id="main" class="filterContainer">
+    <div class="container bg-normal">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="page-header">
+                    <h1 class="text-normal">我的购物车</h1>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-3">
+                <div class="checkbox">
+                    <label>
+                        <input class="selectAll" type="checkbox">全选
+                    </label>
+                </div>
+            </div>
+            <div class="col-xs-9 text-right">
+                <button class="btn btn-primary">编辑</button>
+            </div>
+        </div>
+        <hr>
+        <div class="row shopList">
+            <div class="col-xs-1 col-sm-2">
+                <input class="selection" type="checkbox">
+            </div>
+            <div class="col-xs-4 col-sm-2">
+                <img src="img/project/djy4.jpg" alt="">
+            </div>
+            <div class="col-xs-7 col-sm-2">滚筒洗衣机</div>
+            <div class="col-xs-4 col-sm-2">套餐一</div>
+            <div class="col-xs-3 col-sm-2">
+                <input type="number" min="1" value="1">
+            </div>
+            <div class="col-xs-7 col-sm-2">998.00</div>
+        </div>
+        <hr>
+        <div class="row shopList">
+            <div class="col-xs-1 col-sm-2">
+                <input class="selection" type="checkbox">
+            </div>
+            <div class="col-xs-4 col-sm-2">
+                <img src="img/project/djy4.jpg" alt="">
+            </div>
+            <div class="col-xs-7 col-sm-2">滚筒洗衣机</div>
+            <div class="col-xs-4 col-sm-2">套餐一</div>
+            <div class="col-xs-3 col-sm-2">
+                <input type="number" min="1" value="1">
+            </div>
+            <div class="col-xs-7 col-sm-2">998.00</div>
+        </div>
+        <hr>
+        <div class="row shopList">
+            <div class="col-xs-1 col-sm-2">
+                <input class="selection" type="checkbox">
+            </div>
+            <div class="col-xs-4 col-sm-2">
+                <img src="img/project/djy4.jpg" alt="">
+            </div>
+            <div class="col-xs-7 col-sm-2">滚筒洗衣机</div>
+            <div class="col-xs-4 col-sm-2">套餐一</div>
+            <div class="col-xs-3 col-sm-2">
+                <input type="number" min="1" value="1">
+            </div>
+            <div class="col-xs-7 col-sm-2">998.00</div>
+        </div>
+        <hr>
+        <div class="row shopList">
+            <div class="col-xs-1 col-sm-2">
+                <input class="selection" type="checkbox">
+            </div>
+            <div class="col-xs-4 col-sm-2">
+                <img src="img/project/djy4.jpg" alt="">
+            </div>
+            <div class="col-xs-7 col-sm-2">滚筒洗衣机</div>
+            <div class="col-xs-4 col-sm-2">套餐一</div>
+            <div class="col-xs-3 col-sm-2">
+                <input type="number" min="1" value="1">
+            </div>
+            <div class="col-xs-7 col-sm-2">998.00</div>
+        </div>
+        <hr>
+        <div class="row shopList">
+            <div class="col-xs-1 col-sm-2">
+                <input class="selection" type="checkbox">
+            </div>
+            <div class="col-xs-4 col-sm-2">
+                <img src="img/project/djy4.jpg" alt="">
+            </div>
+            <div class="col-xs-7 col-sm-2">滚筒洗衣机</div>
+            <div class="col-xs-4 col-sm-2">套餐一</div>
+            <div class="col-xs-3 col-sm-2">
+                <input type="number" min="1" value="1">
+            </div>
+            <div class="col-xs-7 col-sm-2">998.00</div>
+        </div>
+        <hr>
+        <div class="row shopList">
+            <div class="col-xs-1 col-sm-2">
+                <input class="selection" type="checkbox">
+            </div>
+            <div class="col-xs-4 col-sm-2">
+                <img src="img/project/djy4.jpg" alt="">
+            </div>
+            <div class="col-xs-7 col-sm-2">滚筒洗衣机</div>
+            <div class="col-xs-4 col-sm-2">套餐一</div>
+            <div class="col-xs-3 col-sm-2">
+                <input type="number" min="1" value="1">
+            </div>
+            <div class="col-xs-7 col-sm-2">998.00</div>
+        </div>
+        <hr>
+        <div class="row shopList">
+            <div class="col-xs-1 col-sm-2">
+                <input class="selection" type="checkbox">
+            </div>
+            <div class="col-xs-4 col-sm-2">
+                <img src="img/project/djy4.jpg" alt="">
+            </div>
+            <div class="col-xs-7 col-sm-2">滚筒洗衣机</div>
+            <div class="col-xs-4 col-sm-2">套餐一</div>
+            <div class="col-xs-3 col-sm-2">
+                <input type="number" min="1" value="1">
+            </div>
+            <div class="col-xs-7 col-sm-2">998.00</div>
+        </div>
+        <hr>
+        <div class="row shopList">
+            <div class="col-xs-1 col-sm-2">
+                <input class="selection" type="checkbox">
+            </div>
+            <div class="col-xs-4 col-sm-2">
+                <img src="img/project/djy4.jpg" alt="">
+            </div>
+            <div class="col-xs-7 col-sm-2">滚筒洗衣机</div>
+            <div class="col-xs-4 col-sm-2">套餐一</div>
+            <div class="col-xs-3 col-sm-2">
+                <input type="number" min="1" value="1">
+            </div>
+            <div class="col-xs-7 col-sm-2">998.00</div>
+        </div>
+        <hr>
+        <div class="row shopList">
+            <div class="col-xs-1 col-sm-2">
+                <input class="selection" type="checkbox">
+            </div>
+            <div class="col-xs-4 col-sm-2">
+                <img src="img/project/djy4.jpg" alt="">
+            </div>
+            <div class="col-xs-7 col-sm-2">滚筒洗衣机</div>
+            <div class="col-xs-4 col-sm-2">套餐一</div>
+            <div class="col-xs-3 col-sm-2">
+                <input type="number" min="1" value="1">
+            </div>
+            <div class="col-xs-7 col-sm-2">998.00</div>
+        </div>
+        <hr>
+        <div class="row h3">
+            <div class="col-xs-9">
+                合计：<span class="countMoney">￥999.00</span>
+            </div>
+            <div class="col-xs-3 text-right">
+                <button id="calc" class="btn btn-funny disabled">结算(0)</button>
+            </div>
+        </div>
+    </div>
+</main>
+<script>
+    $(function(){
+        $("input.selectAll").bind("change",function(){
+            $.each($("input.selection"),function(i,val){
+                // val.checked =
+                // console.log(i);
+                // console.log(val);
+                // console.log(($("input.selectAll"))[0].checked);
+                val.checked = ($("input.selectAll"))[0].checked;
+            });
+            if(($("input.selectAll"))[0].checked){
+                $("#calc").removeClass("disabled");
+                $("#calc").text("结算("+$("input.selection").length+")");
+            }else{
+                $("#calc").addClass("disabled");
+                $("#calc").text("结算(0)");
+            }
+        });
+
+        $("input.selection").bind("change",function(){
+            var selectAll = $(".selectAll");
+            var selectedCount = 0;
+            var b = true;
+            $.each($("input.selection"),function(i,val){
+                if(val.checked){
+                    selectedCount++;
+                }else{
+                    b = false;
+                }
+            });
+            selectAll[0].checked = b;
+            if(selectedCount > 0){
+                $("#calc").removeClass("disabled");
+                $("#calc").text("结算("+selectedCount+")");
+            }else{
+                $("#calc").addClass("disabled");
+                $("#calc").text("结算(0)");
+            }
+        });
+
+        $("#calc").bind("click",function(){
+            if($(this).hasClass("disabled")){
+                return;
+            }else{
+                location.href = "submitShop.html";
+            }
+        })
+        // var length = $("input.selection").length;
+        // alert(length);
+    });
+</script>
+</body>
+</html>

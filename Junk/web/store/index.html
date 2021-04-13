@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta charset="UTF-8">
+    <title>商家管理后台首页</title>
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/baseStyle.css">
+    <script type="text/javascript" src="../js/jquery-3.2.1.js"></script>
+    <script type="text/javascript" src="../js/bootstrap.js"></script>
+    <script type="text/javascript" src="../js/baseJs.js"></script>
+    <style>
+        .jumbotron{
+            background-color: #2aabd2;
+            color:white;
+        }
+        .jumbotron a{
+            color:white;
+        }
+    </style>
+</head>
+<body id="body">
+<div class="modal fade" id="loginModal" tabindex="-1">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">登陆我的破烂网账号</h4>
+            </div>
+            <div class="modal-body">
+                <span>账号</span>
+                <input type="text" class="form-control">
+                <span>密码</span>
+                <input type="password" class="form-control">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox">记住密码
+                    </label>
+                    <label>
+                        <input type="checkbox">七天免登录
+                    </label>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary">登陆</button>
+            </div>
+        </div>
+    </div>
+</div>
+<nav id="nav" class="navbar navbar-default">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Brand</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
+                <li><a href="#">Link</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false">Dropdown <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">Separated link</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">One more separated link</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#" data-toggle="modal" data-target="#loginModal">登陆</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">Separated link</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div><!-- /.navbar-collapse -->
+</nav>
+<main id="main">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="jumbotron">
+                    <h1>欢迎来到破烂网商家后台</h1>
+                    <p><a href="#what">什么是商家？</a><a href="#how">怎么成为商家？</a><a href="#condition">成为商家的条件是什么？</a></p>
+                    <p><a class="btn btn-primary btn-lg" href="#" role="button">成为商家</a></p>
+                </div>
+                <h2 class="text-primary">本月之星</h2>
+                <div class="media">
+                    <div class="media-left">
+                        <a href="#">
+                            <img class="media-object xLargeImg" src="../img/headimg/0617.png" alt="">
+                        </a>
+                    </div>
+                    <div class="media-body">
+                        <h2 class="media-heading text-danger">
+                            铃鹿山零食店
+                            <span class="glyphicon glyphicon-fire"></span>
+                            <span class="glyphicon glyphicon-fire"></span>
+                            <span class="glyphicon glyphicon-fire"></span>
+                            <span class="glyphicon glyphicon-fire"></span>
+                        </h2>
+                        <div class="media">
+                            <div class="media-left">
+                                <a href="#">
+                                    <img class="media-object largeImg" src="../img/headimg/0617.png" alt="">
+                                </a>
+                            </div>
+                            <div class="media-body">
+                                <h2 class="media-heading text-danger">铃鹿御前</h2>
+                                售出19999份
+                            </div>
+                            <div class="media-left">
+                                <a href="#">
+                                    <img class="media-object largeImg" src="../img/headimg/0617.png" alt="">
+                                </a>
+                            </div>
+                            <div class="media-body">
+                                <h2 class="media-heading text-danger">铃鹿御前</h2>
+                                售出19999份
+                            </div>
+                            <div class="media-left">
+                                <a href="#">
+                                    <img class="media-object largeImg" src="../img/headimg/0617.png" alt="">
+                                </a>
+                            </div>
+                            <div class="media-body">
+                                <h2 class="media-heading text-danger">铃鹿御前</h2>
+                                售出19999份
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <h2 class="text-primary text-right">精品店铺</h2>
+                <div class="media">
+                    <div class="media-body">
+                        <h2 class="media-heading text-danger text-right">
+                            <span class="glyphicon glyphicon-fire"></span>
+                            <span class="glyphicon glyphicon-fire"></span>
+                            <span class="glyphicon glyphicon-fire"></span>
+                            <span class="glyphicon glyphicon-fire"></span>
+                            铃鹿山零食店
+                        </h2>
+                        <div class="media">
+                            <div class="media-body text-right">
+                                <h2 class="media-heading text-danger">铃鹿御前</h2>
+                                售出19999份
+                            </div>
+                            <div class="media-right">
+                                <a href="#">
+                                    <img class="media-object largeImg" src="../img/headimg/0617.png" alt="">
+                                </a>
+                            </div>
+                            <div class="media-body text-right">
+                                <h2 class="media-heading text-danger">铃鹿御前</h2>
+                                售出19999份
+                            </div>
+                            <div class="media-right">
+                                <a href="#">
+                                    <img class="media-object largeImg" src="../img/headimg/0617.png" alt="">
+                                </a>
+                            </div>
+                            <div class="media-body text-right">
+                                <h2 class="media-heading text-danger">铃鹿御前</h2>
+                                售出19999份
+                            </div>
+                            <div class="media-right">
+                                <a href="#">
+                                    <img class="media-object largeImg" src="../img/headimg/0617.png" alt="">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="media-right">
+                        <a href="#">
+                            <img class="media-object xLargeImg" src="../img/headimg/0617.png" alt="">
+                        </a>
+                    </div>
+                </div>
+                <h2 id="what" class="text-primary">什么是商家？</h2>
+                <p class="h4">
+                    商家是破烂网提供的一种网上店铺，在这里，你可以拥有属于自己的店铺，上传属于自己的一些商品，
+                    商家是破烂网提供的一种网上店铺，在这里，你可以拥有属于自己的店铺，上传属于自己的一些商品，
+                    商家是破烂网提供的一种网上店铺，在这里，你可以拥有属于自己的店铺，上传属于自己的一些商品，
+                    商家是破烂网提供的一种网上店铺，在这里，你可以拥有属于自己的店铺，上传属于自己的一些商品，
+                    商家是破烂网提供的一种网上店铺，在这里，你可以拥有属于自己的店铺，上传属于自己的一些商品，
+                    商家是破烂网提供的一种网上店铺，在这里，你可以拥有属于自己的店铺，上传属于自己的一些商品，
+                    商家是破烂网提供的一种网上店铺，在这里，你可以拥有属于自己的店铺，上传属于自己的一些商品，
+                    商家是破烂网提供的一种网上店铺，在这里，你可以拥有属于自己的店铺，上传属于自己的一些商品，
+                    商家是破烂网提供的一种网上店铺，在这里，你可以拥有属于自己的店铺，上传属于自己的一些商品，
+                    商家是破烂网提供的一种网上店铺，在这里，你可以拥有属于自己的店铺，上传属于自己的一些商品，
+                    商家是破烂网提供的一种网上店铺，在这里，你可以拥有属于自己的店铺，上传属于自己的一些商品，
+                    商家是破烂网提供的一种网上店铺，在这里，你可以拥有属于自己的店铺，上传属于自己的一些商品，
+                    商家是破烂网提供的一种网上店铺，在这里，你可以拥有属于自己的店铺，上传属于自己的一些商品，
+                    商家是破烂网提供的一种网上店铺，在这里，你可以拥有属于自己的店铺，上传属于自己的一些商品，
+                    商家是破烂网提供的一种网上店铺，在这里，你可以拥有属于自己的店铺，上传属于自己的一些商品，
+                    商家是破烂网提供的一种网上店铺，在这里，你可以拥有属于自己的店铺，上传属于自己的一些商品，
+                    商家是破烂网提供的一种网上店铺，在这里，你可以拥有属于自己的店铺，上传属于自己的一些商品，
+                    商家是破烂网提供的一种网上店铺，在这里，你可以拥有属于自己的店铺，上传属于自己的一些商品，
+                    商家是破烂网提供的一种网上店铺，在这里，你可以拥有属于自己的店铺，上传属于自己的一些商品。
+                </p>
+                <h2 id="how" class="text-primary">怎么成为商家？</h2>
+                <p class="h4">
+                    商家是破烂网提供的一种网上店铺，在这里，你可以拥有属于自己的店铺，上传属于自己的一些商品，
+                    商家是破烂网提供的一种网上店铺，在这里，你可以拥有属于自己的店铺，上传属于自己的一些商品，
+                    商家是破烂网提供的一种网上店铺，在这里，你可以拥有属于自己的店铺，上传属于自己的一些商品，
+                    商家是破烂网提供的一种网上店铺，在这里，你可以拥有属于自己的店铺，上传属于自己的一些商品，
+                    商家是破烂网提供的一种网上店铺，在这里，你可以拥有属于自己的店铺，上传属于自己的一些商品，
+                    商家是破烂网提供的一种网上店铺，在这里，你可以拥有属于自己的店铺，上传属于自己的一些商品，
+                    商家是破烂网提供的一种网上店铺，在这里，你可以拥有属于自己的店铺，上传属于自己的一些商品，
+                    商家是破烂网提供的一种网上店铺，在这里，你可以拥有属于自己的店铺，上传属于自己的一些商品，
+                    商家是破烂网提供的一种网上店铺，在这里，你可以拥有属于自己的店铺，上传属于自己的一些商品，
+                    商家是破烂网提供的一种网上店铺，在这里，你可以拥有属于自己的店铺，上传属于自己的一些商品，
+                    商家是破烂网提供的一种网上店铺，在这里，你可以拥有属于自己的店铺，上传属于自己的一些商品，
+                    商家是破烂网提供的一种网上店铺，在这里，你可以拥有属于自己的店铺，上传属于自己的一些商品，
+                    商家是破烂网提供的一种网上店铺，在这里，你可以拥有属于自己的店铺，上传属于自己的一些商品，
+                    商家是破烂网提供的一种网上店铺，在这里，你可以拥有属于自己的店铺，上传属于自己的一些商品，
+                    商家是破烂网提供的一种网上店铺，在这里，你可以拥有属于自己的店铺，上传属于自己的一些商品，
+                    商家是破烂网提供的一种网上店铺，在这里，你可以拥有属于自己的店铺，上传属于自己的一些商品，
+                    商家是破烂网提供的一种网上店铺，在这里，你可以拥有属于自己的店铺，上传属于自己的一些商品，
+                    商家是破烂网提供的一种网上店铺，在这里，你可以拥有属于自己的店铺，上传属于自己的一些商品，
+                    商家是破烂网提供的一种网上店铺，在这里，你可以拥有属于自己的店铺，上传属于自己的一些商品。
+                </p>
+                <h2 id="condition" class="text-primary">成为商家的条件是什么？</h2>
+                <p class="h4">
+                    商家是破烂网提供的一种网上店铺，在这里，你可以拥有属于自己的店铺，上传属于自己的一些商品，
+                    商家是破烂网提供的一种网上店铺，在这里，你可以拥有属于自己的店铺，上传属于自己的一些商品，
+                    商家是破烂网提供的一种网上店铺，在这里，你可以拥有属于自己的店铺，上传属于自己的一些商品，
+                    商家是破烂网提供的一种网上店铺，在这里，你可以拥有属于自己的店铺，上传属于自己的一些商品，
+                    商家是破烂网提供的一种网上店铺，在这里，你可以拥有属于自己的店铺，上传属于自己的一些商品，
+                    商家是破烂网提供的一种网上店铺，在这里，你可以拥有属于自己的店铺，上传属于自己的一些商品，
+                    商家是破烂网提供的一种网上店铺，在这里，你可以拥有属于自己的店铺，上传属于自己的一些商品，
+                    商家是破烂网提供的一种网上店铺，在这里，你可以拥有属于自己的店铺，上传属于自己的一些商品，
+                    商家是破烂网提供的一种网上店铺，在这里，你可以拥有属于自己的店铺，上传属于自己的一些商品，
+                    商家是破烂网提供的一种网上店铺，在这里，你可以拥有属于自己的店铺，上传属于自己的一些商品，
+                    商家是破烂网提供的一种网上店铺，在这里，你可以拥有属于自己的店铺，上传属于自己的一些商品，
+                    商家是破烂网提供的一种网上店铺，在这里，你可以拥有属于自己的店铺，上传属于自己的一些商品，
+                    商家是破烂网提供的一种网上店铺，在这里，你可以拥有属于自己的店铺，上传属于自己的一些商品，
+                    商家是破烂网提供的一种网上店铺，在这里，你可以拥有属于自己的店铺，上传属于自己的一些商品，
+                    商家是破烂网提供的一种网上店铺，在这里，你可以拥有属于自己的店铺，上传属于自己的一些商品，
+                    商家是破烂网提供的一种网上店铺，在这里，你可以拥有属于自己的店铺，上传属于自己的一些商品，
+                    商家是破烂网提供的一种网上店铺，在这里，你可以拥有属于自己的店铺，上传属于自己的一些商品，
+                    商家是破烂网提供的一种网上店铺，在这里，你可以拥有属于自己的店铺，上传属于自己的一些商品，
+                    商家是破烂网提供的一种网上店铺，在这里，你可以拥有属于自己的店铺，上传属于自己的一些商品。
+                </p>
+            </div>
+        </div>
+    </div>
+</main>
+</body>
+</html>

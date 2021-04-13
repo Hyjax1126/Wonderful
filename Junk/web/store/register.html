@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta charset="UTF-8">
+    <title>破烂网商家资格申请</title>
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/baseStyle.css">
+    <script type="text/javascript" src="../js/jquery-3.2.1.js"></script>
+    <script type="text/javascript" src="../js/bootstrap.js"></script>
+    <script type="text/javascript" src="../js/baseJs.js"></script>
+    <style>
+        .form-group img{
+            max-width: 200px;
+        }
+    </style>
+</head>
+<body id="body">
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">登陆我的破烂网账号</h4>
+            </div>
+            <div class="modal-body">
+                <span>账号</span>
+                <input type="text" class="form-control">
+                <span>密码</span>
+                <input type="password" class="form-control">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox">记住密码
+                    </label>
+                    <label>
+                        <input type="checkbox">七天免登录
+                    </label>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary">登陆</button>
+            </div>
+        </div>
+    </div>
+</div>
+<nav id="nav" class="navbar navbar-default">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Brand</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
+                <li><a href="#">Link</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false">Dropdown <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">Separated link</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">One more separated link</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#" data-toggle="modal" data-target="#loginModal">登陆</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">Separated link</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div><!-- /.navbar-collapse -->
+</nav>
+<main id="main">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="jumbotron bg-primary">
+                    <h1>破烂网商家资格申请</h1>
+                    <p>
+                        <a href="">我需要知道什么？</a>
+                    </p>
+                    <p>
+                        <a href="#registerBox" class="btn btn-primary">开始申请</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <form id="registerBox" class="form-horizontal">
+            <div class="form-group">
+                <label class="control-label col-md-3">店铺名</label>
+                <div class="col-md-7">
+                    <input type="text" required class="form-control">
+                    <span class="help-block">请确定您的店铺名，店铺名确定后无法更改</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-3">真实姓名</label>
+                <div class="col-md-7">
+                    <input type="text" required class="form-control">
+                    <span class="help-block">申请商家资格必须要进行实名认证</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-3">身份证</label>
+                <div class="col-md-7">
+                    <input type="text" class="form-control">
+                    <span class="help-block">请输入真实且年满十八岁的身份证账号</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-3">经营类型</label>
+                <div class="col-md-7">
+                    <select class="form-control">
+                        <option value="">全部</option>
+                        <option value="">零食</option>
+                        <option value="">数码</option>
+                    </select>
+                    <span class="help-block">我们会在用户搜索时为您提供对应类型的热度，除非您的经营类型为全部</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-3">手机号码</label>
+                <div class="col-md-7">
+                    <input type="text" class="form-control">
+                    <span class="help-block">请保证您的手机号码是本人使用，否则出现的安全问题，我们概不负责，如果置空，将无法与网站交互</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-3">手持身份证照片</label>
+                <div class="col-md-7">
+                    <img class="img-thumbnail" src="../img/headimg/0617.png" alt="">
+                    <img src="" alt="">
+                    <input type="file">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-3 col-md-7">
+                    <button class="btn btn-primary">注册</button>
+                    <input type="reset" class="btn btn-default">
+                </div>
+            </div>
+        </form>
+    </div>
+</main>
+<div style="display: none" class="stored">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="jumbotron">
+                    <h1>您已经是商家了！</h1>
+                    <p>
+                        <a href="">进入我的店铺</a>
+                    </p>
+                    <p>
+                        <a href="">我要注销店铺</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div style="display: none" class="submitted">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="jumbotron">
+                    <h1>提交成功！</h1>
+                    <p>
+                        您的申请已经提交，工作人员将在48小时内进行审核，请耐心等待！<a href="">看看别人的店铺</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
